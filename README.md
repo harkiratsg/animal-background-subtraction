@@ -154,7 +154,7 @@ Clean and Noisy Image Extraction:
 
 The first step is to extract the cleanest activation maps. A score is computed for each activation map and the image is sorted on this criteria. The top N images are selected as the cleanest. Likewise, the lowest scoring N images are selected as the noisiest images. The metric to score each image is defined as:
 
-a * MEAN(act_map * img_mask) - (1 - a) * MEAN(act_map * (1 - img_mask))
+    a * mean(act_map * img_mask) - (1 - a) * mean(act_map * (1 - img_mask))
 
 This essentially gives a higher score for images where the average value inside the bounding box is significantly higher than the mean value outside the bounding box given a parameter a as the weight for how much the highlighted region inside the bounding box matters relative to the noise outside. When a predicted segmentations highlights a large part of the image inside the bounds and nothing outside, it is given a high score, but if there is a lot of noise outside the image, it will have a lower score.
 
@@ -164,9 +164,9 @@ Uniform Noisy Patch Extraction:
 
 The uniform noise is meant to be static and unstructured noise while the structured noise is meant to capture areas that are confidently confused for parts of the animal. Given a set of noisy patches, the patches are scored by the following metrics:
 
-uniform noise score = gini(mean(patch)) + mean(gini(patch))
+    uniform noise score = gini(mean(patch)) + mean(gini(patch))
 
-structured noise metric = gini(mean(patch)) + mean(-gini(patch))
+    structured noise metric = gini(mean(patch)) + mean(-gini(patch))
 
 and the top K patches are from each set selected. A vinnette is added on to the noisy patches so the hard edges do not create confusion when applied to a clean image.
 
