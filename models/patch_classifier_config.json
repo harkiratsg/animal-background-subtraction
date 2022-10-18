@@ -1,0 +1,29 @@
+{
+    "patch_classifier_med_16" : {
+      "width":16,
+      "height":16,
+      "layer_dims":[32, 16, 8, 4],
+      "k":5
+    },
+  
+    "patch_classifier_med_32":{
+      "width":32,
+      "height":32,
+      "layer_dims":[32, 16, 8, 4],
+      "k":5
+    },
+  
+    "patch_classifier_med_64":{
+      "width":64,
+      "height":64,
+      "layer_dims":[32, 16, 8, 4],
+      "k":5
+    },
+  
+    "patch_classifier_med_128":{
+      "width":128,
+      "height":128,
+      "layer_dims":[32, 16, 8, 4],
+      "k":5
+    }
+  }
